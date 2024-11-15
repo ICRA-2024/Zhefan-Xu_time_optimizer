@@ -20,11 +20,12 @@ WORKDIR $CATKIN_WS/src
 RUN git clone https://github.com/ICRA-2024/Zhefan-Xu_time_optimizer.git \
     && git clone https://github.com/Zhefan-Xu/global_planner.git \
     && git clone https://github.com/Zhefan-Xu/trajectory_planner.git \
-    && git clone https://github.com/Zhefan-Xu/map_manager.git
+    && git clone https://github.com/Zhefan-Xu/map_manager.git \
+    && git clone https://github.com/Zhefan-Xu/onboard_detector.git
 
 # Build the workspace
 WORKDIR $CATKIN_WS
-RUN catkin_make
+RUN /bin/bash -c "source /opt/ros/noetic/setup.bash && catkin_make"
 
 # Set up the environment for ROS
 RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc && \
