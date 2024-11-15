@@ -23,6 +23,11 @@ RUN git clone https://github.com/ICRA-2024/Zhefan-Xu_time_optimizer.git \
     && git clone https://github.com/Zhefan-Xu/map_manager.git \
     && git clone https://github.com/Zhefan-Xu/onboard_detector.git
 
+RUN apt-get update && apt-get install -y \
+    ros-noetic-octomap-ros \
+    ros-noetic-vision-msgs \
+    && rm -rf /var/lib/apt/lists/*
+    
 # Build the workspace
 WORKDIR $CATKIN_WS
 RUN /bin/bash -c "source /opt/ros/noetic/setup.bash && catkin_make"
